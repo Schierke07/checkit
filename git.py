@@ -1,10 +1,12 @@
+import datetime
 import os
 
+x = datetime.datetime(2020, 5, 17)
 def make_commit(days: int):
     if days < 1:
         return os.system('git push')
     else:
-        dates = f'{days} days ago'
+        dates = f'{days} 10 days ago'
 
         with open('data.txt', 'a') as file:
             file.write(f'{dates}\n')
@@ -13,5 +15,6 @@ def make_commit(days: int):
 
         os.system('git commit --date="'+dates+'" -m "First Commit"')
 
-        return days*make_commit(days-1)
-make_commit(110)
+        return days*make_commit(days-10)
+
+make_commit(10)
