@@ -13,7 +13,5 @@ def make_commit(days: int):
 
         os.system('git commit --date="'+dates+'" -m "First Commit"')
 
-        return days*make_commit(days - 1)
-
-
+        return days*make_commit(days-1)
 make_commit(110)
