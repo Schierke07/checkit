@@ -15,4 +15,4 @@ def make_commit(days: int):
 
         return days*make_commit(days - 1)
 
-make_commit(100)
+make_commit(50)
