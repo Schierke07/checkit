@@ -1,11 +1,18 @@
 import os
-import random
 
-for i in range(100):
-    d = str(i) + 'days ago'
-    rand = random.randrange(1, 12)
-    with open('test.txt', 'a') as file:
-        file.write(d+'\n')
-    os.system('git add test.txt')
-    os.system('git commit --date=" 2020-'+str(rand)+'-'+d+'" -m 1')
-os.system('git push -u origin main')
+def make_commit(days: int):
+    if days < 1:
+        return os.system('git push')
+    else:
+        dates = f'{days} days ago'
+
+        with open('data.txt', 'a') as file:
+            file.write(f'{dates}\n')
+
+        os.system('git add data.txt')
+
+        os.system('git commit --date="'+dates+'" -m "First Commit"')
+
+        return days*make_commit(days - 1)
+
+make_commit(100)
